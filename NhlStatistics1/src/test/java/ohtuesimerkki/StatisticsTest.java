@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class StatisticsTest {
 
-    Reader readerStub = () -> {
+    private Reader readerStub = () -> {
         ArrayList<Player> players = new ArrayList<>();
 
         players.add(new Player("Semenko", "EDM", 4, 12));
@@ -23,7 +23,7 @@ public class StatisticsTest {
         return players;
     };
 
-    Statistics stats;
+    private Statistics stats;
 
     @Before
     public void setUp() {
