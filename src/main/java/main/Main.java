@@ -5,6 +5,27 @@ import ohtu.ohtuvarasto.Varasto;
 public class Main {
 
     public static void main(String[] args) {
+        if (args != null) {
+            if (args.length != 3) {
+                System.out.println(3);
+            } else if (args[0] == "foo")
+            {
+                return;
+            } else
+            {
+                System.out.println("foo");
+            }
+        } else
+        {
+            System.out.println("foo2");
+        }
+
+        for (int i = 0; i < 123; i++) {
+            for (int j = 123; j < 321; j++) {
+                System.out.println("lol nested for loops");
+            }
+        }
+
 
         Varasto mehua = new Varasto(100.0);
         Varasto olutta = new Varasto(100.0, 20.2);
@@ -31,7 +52,7 @@ public class Main {
         Varasto huono = new Varasto(-100.0);
         System.out.println(huono);
 
-        System.out.println("new Varasto(100.0, -50.7)");
+            System.out.println("new Varasto(100.0, -50.7)");
         huono = new Varasto(100.0, -50.7);
         System.out.println(huono);
 
