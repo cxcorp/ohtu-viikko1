@@ -1,4 +1,5 @@
 build/
+bin/
 /*.tmp
 gradle.properties
 .gradle/
