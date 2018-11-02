@@ -45,8 +45,29 @@ public class VarastoTest {
     }
 
     @Test
-    public void konstruktoriEiLuoNegatiivistaSaldoa() {
+    public void toinenKonstruktoriEiLuoNegatiivistaTilavuutta2() {
+        varasto = new Varasto(-10, 10);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void toinenKonstruktoriEiLuoNegatiivistaSaldoa() {
         varasto = new Varasto(10, -10);
+        assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void toinenKonstruktoriLuoNollaVaraston() {
+        varasto = new Varasto(0, 0);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void toinenKonstruktoriEiAsetaNollaVarastolleMahdotontaSaldoa() {
+        varasto = new Varasto(0, 5);
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
     }
 

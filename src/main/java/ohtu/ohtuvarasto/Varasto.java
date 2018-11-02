@@ -8,27 +8,12 @@ public class Varasto {
 
     // --- konstruktorit: ---
     public Varasto(double tilavuus) { // tilavuus on annettava
-        if (tilavuus > 0.0) {
-            this.tilavuus = tilavuus;
-        } else { // virheellinen, nollataan
-            this.tilavuus = 0.0; // => käyttökelvoton varasto
-        }
-        saldo = 0; // oletus: varasto on tyhjä
+        this(tilavuus, 0);
     }
 
     public Varasto(double tilavuus, double alkuSaldo) { // kuormitetaan
-        if (tilavuus > 0.0) {
-            this.tilavuus = tilavuus;
-        } else { // virheellinen, nollataan
-            this.tilavuus = 0.0; // => käyttökelvoton varasto
-        }
-        if (alkuSaldo < 0.0) {
-            this.saldo = 0.0;
-        } else if (alkuSaldo <= tilavuus) { // mahtuu
-            this.saldo = alkuSaldo;
-        } else {
-            this.saldo = tilavuus; // täyteen ja ylimäärä hukkaan!
-        }
+        this.tilavuus = clampMin(tilavuus, 0);
+        this.saldo = clamp(alkuSaldo, 0, this.tilavuus);
     }
 
     // --- ottavat aksessorit eli getterit: ---
@@ -73,5 +58,14 @@ public class Varasto {
     // --- Merkkijonoesitys Varasto-oliolle: ----
     public String toString() {
         return ("saldo = " + saldo + ", vielä tilaa " + paljonkoMahtuu());
+    }
+
+    private static double clampMin(double val, double min) {
+        return Math.max(val, min);
+    }
+
+    private static double clamp(double val, double min, double max) {
+        // from https://stackoverflow.com/a/16659144/996081
+        return Math.max(min, Math.min(max, val));
     }
 }
